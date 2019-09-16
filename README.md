@@ -16,8 +16,8 @@ echo "update -o quiet=2" > /etc/cron-apt/action.d/0-update
 printf "autoclean -y\ndist-upgrade -y -o APT::Get::Show-Upgraded=true" > /etc/cron-apt/action.d/3-download
 # fail2ban installieren
 curl https://raw.githubusercontent.com/unixag-zw/proxmox-docs/master/assets/scripts/jail.local -o /etc/fail2ban/jail.local
-curl https://raw.githubusercontent.com/unixag-zw/proxmox-docs/master/assets/scripts/proxmox.conf -o /etc/fail2ban/filters.d/proxmox.conf
+curl https://raw.githubusercontent.com/unixag-zw/proxmox-docs/master/assets/scripts/proxmox.conf -o /etc/fail2ban/filter.d/proxmox.conf
 # root-Login per SSH verbieten
-sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/shh/sshd_config
+sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
 service ssh restart
 ```
